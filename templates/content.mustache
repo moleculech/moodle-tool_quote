@@ -1,0 +1,69 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template block_quote/content
+
+    My quote list block content template.
+
+    Renders a list of quote items.
+
+    Classes required for JS:
+    * none
+
+    Data attributes required for JS:
+    * data-region="block_quote-instance-<instanceid>" - specifies the region wrapping all the contents
+    * data-item="<id>" - specifies the wraper of a single quote item
+    * data-control="addform" - specifies the form for adding a new quote item
+    * data-control="delete" - specifies the button for deleting an item
+
+    Context variables required for this template:
+    * instanceid - block instance id
+    * items
+    ** items.id
+    ** items.quotetext
+    ** items.done
+
+    Example context (json):
+    {
+        "items": [
+            { "id": "2", "quotetext": "Meditate", "done": "0" }
+            { "id": "1", "quotetext": "Hack", "done": "1" }
+        ]
+    }
+
+}}
+
+<div data-region="block_quote-instance-{{instanceid}}">
+    <form data-control="addform">
+        <div class="input-group control-group">
+            <input class="form-control input-block-level" type="text" placeholder="{{#str}} placeholder, block_quote {{/str}}">
+            <span class="input-group-btn">
+                <button class="btn btn-primary" type="button">
+                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                    {{#str}} add {{/str}}</button>
+            </span>
+        </div>
+    </form>
+
+    <hr>
+
+    <ul class="list-group unstyled">
+        {{#items}}
+            {{>block_quote/item}}
+        {{/items}}
+    </ul>
+</div>
