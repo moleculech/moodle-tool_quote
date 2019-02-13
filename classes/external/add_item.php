@@ -25,6 +25,7 @@ namespace block_quote\external;
 
 defined('MOODLE_INTERNAL') || die();
 
+use block_quote\event\item_added;
 use block_quote\item;
 use context_user;
 use external_function_parameters;
@@ -95,10 +96,23 @@ trait add_item {
         $item->create();
 
         /**
+         * Log that the user has created an new entry
+         */
+        self::log($item,$context);
+
+        /**
          * Brings the item in the correct format to return to the browser
          */
         $itemexporter = new item_exporter($item, ['context' => $context]);
         return $itemexporter->export($PAGE->get_renderer('core'));
+    }
+
+    public static function log($item,$context) {
+        $event = item_added::create(array(
+                'objectid' => $item->get('id'),
+                'context' => $context
+        ));
+        $event->trigger();
     }
 
     /**

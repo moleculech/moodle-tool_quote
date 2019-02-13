@@ -61,6 +61,10 @@ class item extends persistent {
      */
     protected static function define_properties() {
         return [
+                'id' => array(
+                        'type' => PARAM_INT,
+                        'description' => 'The primary key of the record.',
+                ),
                 'quotetext' => [
                         'type' => PARAM_TEXT,
                 ],

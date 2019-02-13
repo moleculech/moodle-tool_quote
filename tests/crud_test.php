@@ -42,7 +42,7 @@ class block_quote_crud_testcase extends \advanced_testcase {
     /** @var \testing_data_generator $datagenerator */
     protected $datagenerator;
 
-    /** @var \stdClass $user*/
+    /** @var \stdClass $user */
     protected $user;
 
     protected function init() {
@@ -102,7 +102,7 @@ class block_quote_crud_testcase extends \advanced_testcase {
      * @throws \required_capability_exception
      * @throws \restricted_context_exception
      */
-    public function test_toggle_item(){
+    public function test_toggle_item() {
         $this->init();
 
         /**
@@ -134,7 +134,7 @@ class block_quote_crud_testcase extends \advanced_testcase {
      * @param int $roleid
      * @throws \coding_exception
      */
-    protected function user($roleid = 1){
+    protected function user($roleid = 1) {
         /**
          * Generate a random user
          *
@@ -162,6 +162,7 @@ class block_quote_crud_testcase extends \advanced_testcase {
 
     /**
      * Returns a random word
+     *
      * @param int $len
      * @return bool|string
      */

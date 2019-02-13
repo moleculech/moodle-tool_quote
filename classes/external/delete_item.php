@@ -21,8 +21,10 @@
  * @copyright   2018 David Mudrák <david@moodle.com>
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+
 namespace block_quote\external;
 defined('MOODLE_INTERNAL') || die();
+
 use block_quote\item;
 use context_user;
 use external_function_parameters;
@@ -30,7 +32,8 @@ use external_value;
 use invalid_parameter_exception;
 
 global $CFG;
-require_once($CFG->libdir.'/externallib.php');
+require_once($CFG->libdir . '/externallib.php');
+
 /**
  * Trait implementing the external function block_quote_delete_item.
  */
@@ -59,10 +62,10 @@ trait delete_item {
     public static function delete_item($id) {
         /**
          * Fetch the globally used variables
+         *
          * @see
          */
         global $USER;
-
 
         $context = context_user::instance($USER->id);
         self::validate_context($context);

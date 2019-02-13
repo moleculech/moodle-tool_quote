@@ -43,3 +43,5 @@ $string['privacy:metadata:db:blockquote:timemodified'] = 'When the item was last
 $string['privacy:metadata:db:blockquote:quotetext'] = 'Todo item text.';
 $string['quote:myaddinstance'] = 'Add a new ToDo block to Dashboard';
 
+// Events and logging
+$string['eventitemadded'] = 'A new quote item was added';

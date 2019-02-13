@@ -33,8 +33,6 @@ use \block_quote\external\add_item;
 
 require_once($CFG->dirroot . '/webservice/tests/helpers.php');
 
-//require_once($CFG->dirroot . '/COMPONENT/externallib.php');
-
 class block_quote_external_testcase extends \externallib_advanced_testcase {
     use add_item;
 
@@ -114,7 +112,7 @@ class block_quote_external_testcase extends \externallib_advanced_testcase {
      * @throws \dml_exception
      * @throws \moodle_exception
      */
-    public function test_add_item_to_course_page(){
+    public function test_add_item_to_course_page() {
         global $DB;
         $this->init();
         $newblock = 'quote';
@@ -130,7 +128,7 @@ class block_quote_external_testcase extends \externallib_advanced_testcase {
          * Enrol the newly created user
          */
         $user = $this->datagenerator->create_user();
-        $studentrole = $DB->get_record('role',['shortname'=>'student']);
+        $studentrole = $DB->get_record('role', ['shortname' => 'student']);
         $this->datagenerator->enrol_user($user->id, $course->id, $studentrole->id);
         $this->setUser($user);
 
@@ -140,7 +138,7 @@ class block_quote_external_testcase extends \externallib_advanced_testcase {
         $page = new \moodle_page();
         $page->set_context(\context_course::instance($course->id));
         $page->set_pagelayout('course');
-        $page->set_pagetype('course-view-'.$course->format);
+        $page->set_pagetype('course-view-' . $course->format);
 
         $page->blocks->load_blocks();
         $page->blocks->add_block_at_end_of_default_region($newblock);
@@ -189,6 +187,7 @@ class block_quote_external_testcase extends \externallib_advanced_testcase {
 
     /**
      * Returns a random word
+     *
      * @param int $len
      * @return bool|string
      */
